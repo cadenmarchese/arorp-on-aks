@@ -1,0 +1,24 @@
+# required env vars populated from dev-config.yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: rp-config
+  namespace: aro-rp
+data:
+  ACR_RESOURCE_ID: # the full resourceID to your ACR, for example, '/subscriptions/your-subscription-od/resourceGroups/your-resource-group/providers/Microsoft.ContainerRegistry/registries/your-acr-name'
+  ADMIN_API_CLIENT_CERT_COMMON_NAME: dev-client
+  ARM_API_CLIENT_CERT_COMMON_NAME: dev-client
+  MDM_ACCOUNT: AzureRedHatOpenShiftRP
+  CLUSTER_MDM_ACCOUNT: AzureRedHatOpenShiftCluster
+  AZURE_FP_CLIENT_ID: # fpClientId (from dev-config.yaml)
+  DOMAIN_NAME: # your TLD, for example, marches-rp.osadev.cloud
+  CLUSTER_MDSD_CONFIG_VERSION: '4.3'
+  CLUSTER_MDSD_ACCOUNT: ARORPLogs
+  CLUSTER_MDSD_NAMESPACE: AROClusterLogs
+  GATEWAY_DOMAINS: # a comma-separated list of your gateway domains, populated from dev-config.yaml
+  GATEWAY_RESOURCEGROUP: # your gateway resoruce group, usually $USER-gwy-eastus
+  KEYVAULT_PREFIX: # your kv prefix, usually $USER-aro-eastus
+  MDSD_ENVIRONMENT: Test
+  MDM_NAMESPACE: Test
+  CLUSTER_MDM_NAMESPACE: Test
+  DATABASE_ACCOUNT_NAME: # your database account name, usually $USER-aro-eastus

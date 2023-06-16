@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monitor
+  namespace: aro-rp
+  labels:
+    app: monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: monitor
+  template:
+    metadata:
+      labels:
+        app: monitor
+    spec:
+      containers:
+      - name: monitor
+        image: # should match the version of RP that you pushed to your ACR. For exmaple, user.azurecr.io/aro:commit
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 443
+        resources:
+          limits:
+            memory: "2G"
+        command: ["/bin/sh", "-c", "env && aro monitor"]
+        envFrom:
+        - configMapRef:
+            name: rp-config
